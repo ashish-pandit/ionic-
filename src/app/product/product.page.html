@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Product</ion-title>
+    <!-- <ngx-ui-loader ></ngx-ui-loader> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div style="text-align: center;">
+  <p style="color: #F21F80;font-weight: 500;margin-top: 2%;">
+    Please Select Your Desired Product
+  </p>
+</div>
+<div>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col *ngFor = 'let product of products' size="6">
+        <ion-card style="text-align: center; height: 85%;">
+              <img style="height: 50%; padding: 10px;" src="{{product.product.product_image}}"/>
+            <ion-card-title style="padding: 5px;">{{product.product.product_name}}</ion-card-title>
+        
+          <ion-card-content>
+            {{product.product.updatedprice | currency:"&#8377;"}}
+                    </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col class=" show-shdaow"  *ngFor = 'let product of products' size="6" (click) = 'goToProductDetail(product)'>
+        <div  style="height: 50%;">
+          <img style="height: 50%; width: 50%; padding: 10px;" src="{{product.product.product_image}}"/>
+          <div>
+            <p class="card-title text-wrap" >{{product.product.product_name}}</p>
+      
+        <p style="margin-block-start: 0px; color: gray; margin-bottom: 0px;" class="card-text">
+          {{product.product.updated_price | currency:"&#8377;"}}
+        </p>
+        <p style="margin-block-start: 0px; color: gray; margin-bottom: 0px;" class="card-text">
+         Available {{product.quantity}}
+        </p>
+        <div style="display: inline-flex; color: gray;">
+          Slot(s): {{ (product.slots).join(", ") }}
+        </div>
+      </div>
+
+        </div> 
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-list>
+    <ion-item *ngFor="let product of products" text-wrap  (click)="openProductPage(product)">
+      <ion-thumbnail item-left>
+        <img style="width: 50%; padding: 10px;" src="{{product.product.product_image}}"/>
+
+      </ion-thumbnail>
+
+      <h2> {{product.product.product_name}}</h2>
+
+      <p>
+        {{product.product.updatedprice | currency:"&#8377;"}}
+      </p>
+
+      <button ion-button icon clear item-right>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list> -->
+</div>
+</ion-content>

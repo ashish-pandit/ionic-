@@ -1,0 +1,168 @@
+<ion-content no-padding>
+  <div class="main">
+    <ion-card no-margin>
+      <ion-card-content>
+        <ion-row class="row">
+          <div class="fire-logo">
+            <img src="assets/femikarelogo.png" class="img-logo">
+            <ion-text padding>
+              <h2 no-margin margin-vertical text-center style="color: #F21F80;">Welcome to Femikare</h2>
+            </ion-text>
+          </div>
+        </ion-row>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div>
+        <ion-row>
+          <ion-col>
+            <ion-input clearInput type="text" placeholder="Full Name" formControlName="email" class="input" padding-horizontal
+              clear-input="true"></ion-input>
+              <small
+                *ngIf="
+                loginForm.controls['email'].invalid &&
+                  (loginForm.controls['email'].dirty ||
+                  loginForm.controls['email'].touched)
+                "
+                class="text-danger"
+              >
+                <span
+                  *ngIf="loginForm.controls['email'].errors.required"
+                  class="text-danger"
+                >
+                  *First name is required.
+                </span>
+                <span *ngIf="loginForm.controls['email'].errors.pattern">
+                  *Please enter alphabets
+                </span>
+              </small>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input clearInput type="number" placeholder="Mobile No." formControlName="mobile" class="input"
+              padding-horizontal clear-input="true"></ion-input>
+              <small
+              *ngIf="
+              loginForm.controls['mobile'].invalid &&
+                (loginForm.controls['mobile'].dirty ||
+                loginForm.controls['mobile'].touched)
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="loginForm.controls['mobile'].errors.required"
+                class="text-danger"
+              >
+                *Phone number is required.
+              </span>
+
+              <span *ngIf="loginForm.controls['mobile'].errors.pattern">
+                *It is not a valid mobile number.
+              </span>
+              <span
+                *ngIf="
+                loginForm.controls['mobile'].errors?.minlength ||
+                loginForm.controls['mobile'].errors?.maxlength
+                "
+              >
+                *You must enter exactly 10 digits
+              </span>
+            </small>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row *ngIf="showOTPInput">
+          <ion-col>
+            <ion-input clearInput type="tel" [(ngModel)]="OTP" maxlength="6" class="otpinput" padding-horizontal>
+            </ion-input>
+          </ion-col>
+        </ion-row> -->
+        <ion-row *ngIf="showOTPInput" class="OTP-border">
+          <ion-col>
+            <div>
+              <ion-input name="1"  type="tel" [ngModelOptions]="{standalone: true}" #inp1  (keyup)="keytab(inp2, $event, inp1)"  [(ngModel)]="OTP[0]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input name="2"  type="tel" [ngModelOptions]="{standalone: true}" #inp2  (keyup)="keytab(inp3, $event, inp1)"  [(ngModel)]="OTP[1]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input name="3"  type="tel" [ngModelOptions]="{standalone: true}" #inp3 (keyup)="keytab(inp4, $event, inp2)" [(ngModel)]="OTP[2]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input name="4"  type="tel" [ngModelOptions]="{standalone: true}" #inp4 (keyup)="keytab(inp5, $event, inp3)" [(ngModel)]="OTP[3]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input name="5"  type="tel" [ngModelOptions]="{standalone: true}" #inp5 (keyup)="keytab(inp6, $event,inp4)" [(ngModel)]="OTP[4]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input name="6"  type="tel" [ngModelOptions]="{standalone: true}" #inp6 (keyup)="keytab(inp6, $event,inp5)" [(ngModel)]="OTP[5]" maxlength="1" class="otpinput"
+                padding-horizontal>
+              </ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="showOTPInput">
+          <ion-col>
+            <ion-text class="small">{{OTPmessage}}</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="text-align: center;">
+            <div class="form-check" *ngIf="!showOTPInput">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" (click) = 'checkbox()'>
+              <label class="form-check-label" for="exampleCheck1" style="border-bottom: 1px solid;" (click)= 'termCondition()'>Term & Condition</label>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf="!showOTPInput" expand="block" [disabled]='!loginForm.valid || nextButton' (click)="next()" color="undefined" class="transition">
+              <strong class="white">
+                Next</strong></ion-button>
+            <ion-button *ngIf="showOTPInput" expand="block" (click)="register()" color="undefined" class="transition">
+              <strong class="white">
+                Register</strong></ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      </form>
+        <ion-row>
+          <ion-col>
+            <ion-text text-center class="block">Already have an account ?
+              <span class="bold" (click) = 'goToLogin()'>Login here</span></ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <!-- <ion-text text-center class="block bold1">Forgot Password</ion-text> -->
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar>
+    <ion-title text-center>
+      Made by Enappd
+    </ion-title>
+  </ion-toolbar>
+</ion-footer> -->

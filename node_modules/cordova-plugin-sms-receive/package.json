@@ -1,0 +1,66 @@
+{
+  "_from": "cordova-plugin-sms-receive",
+  "_id": "cordova-plugin-sms-receive@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-y2QMX709RgrbCHVDHAewjvXi50h+u+VcuCQADPJS+tH/BosFie+x1vo5mMwysuIEiaQ25b0qhIzo63RCyT5Fyw==",
+  "_location": "/cordova-plugin-sms-receive",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-sms-receive",
+    "name": "cordova-plugin-sms-receive",
+    "escapedName": "cordova-plugin-sms-receive",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-sms-receive/-/cordova-plugin-sms-receive-1.0.2.tgz",
+  "_shasum": "6060bec36c90414d91164cf6e2660db698c8f0a7",
+  "_spec": "cordova-plugin-sms-receive",
+  "_where": "/home/ashish/Public/work/femikareApp/femikare",
+  "author": {
+    "name": "Andres Zsogon",
+    "email": "andreszs@users.noreply.github.com"
+  },
+  "bugs": {
+    "url": "https://github.com/andreszs/cordova-plugin-sms-receive/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-sms-receive",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin to receive SMS in Android",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=4"
+    }
+  ],
+  "homepage": "https://github.com/andreszs/cordova-plugin-sms-receive#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "sms",
+    "receive"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-sms-receive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreszs/cordova-plugin-sms-receive.git"
+  },
+  "version": "1.0.2"
+}

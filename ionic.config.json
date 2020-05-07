@@ -1,5 +1,8 @@
 {
   "name": "femikare",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }

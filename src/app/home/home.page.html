@@ -1,20 +1,55 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- <mat-label> hahah  </mat-label> -->
+      <button class="bnone" mat-button [matMenuTriggerFor]="beforeMenu" style="background-color: #F21F80;">
+        <ion-icon style="color: white;" name="cog"></ion-icon>
+        <!-- <img src="assets/img/1.png" class="rounded-circle" width="40" height="40"/> -->
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button class="bnone" mat-menu-item (click)='profile()'>Profile</button>
+        <button class="bnone" mat-menu-item (click)='call()'>Contact Us</button>
+        <button class="bnone" mat-menu-item (click)='term()'>Term & Policy</button>
+        <button class="bnone" mat-menu-item (click)='privacy()'>Privacy Policy</button>
+        <button class="bnone" mat-menu-item (click)='return()'>Return Policy</button>
+        <!-- <mat-divider></mat-divider> -->
+        <button class="bnone" mat-menu-item (click)='logout()'>Logout</button>
+      </mat-menu>
+      <!-- <ion-button>
+      </ion-button> -->
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content padding>
+    <div >
+                  <ion-row>
+                    <ion-col class="button-align">
+                      <div style="text-align: center;">
+                        <p *ngIf = '!errorMsg' style="color: #F21F80;">
+                          Click here to Scan the QR Code</p>
+                        <p *ngIf = 'errorMsg' style="color: #F21F80;">Machine is Offline , Please try again later</p>
+                      </div>
+                     <div style="text-align: center;" (click)="scan()">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+                       <img src="assets/icon/bar.png" class="img-logo" style="width: 50%;" >
+                     </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+                      <ion-button color="secondary" expand="full" (click)="scan()">
+                        <ion-icon name="barcode"></ion-icon>
+                       <span style="margin-left: 10px;">Scan Machine QR</span> </ion-button>
+                       <p style="text-align: center; color:#F21F80 ;">OR</p>
+                      <ion-input placeholder = 'Enter Machine ID' style="border: 2px solid#F21F80 ;" [(ngModel)]="machineId"></ion-input>
+                      <ion-button color="secondary" expand="full" (click)="scanManual()">Check Machine</ion-button>
+                      <!-- <ion-button color="secondary" expand="full" (click)="machineNearByMe()">Machine Near Me</ion-button>
+                      <div *ngFor = 'let machine of machines'>
+                        <ion-button color="secondary" expand="full" (click)="map(machine)"> {{machine.machine_name}} <span style="margin-left: 15%;">{{machine.distance.toFixed(2)}}KM</span> </ion-button>
+                      </div> -->
+                    </ion-col> 
+                  </ion-row>
+                  <p class="align" (click) = 'goToLocation()'>Machine Near Me ? Click Here </p>
+    </div>
 </ion-content>

@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+  <ion-title>Quantity</ion-title>
+  <!-- <ngx-ui-loader ></ngx-ui-loader> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="product-detail" style="background-color: #f4f4f4;">
+
+<div>
+  <img class="rounded mx-auto d-block" src="{{productImage}}" style="width: 70%; padding: 10px;"/>
+ 
+</div>
+
+  <ion-card>
+    <ion-card-content>
+      <h2>{{productName}}</h2>
+      <small >Special Price</small>
+      <p class="price"> {{ productPrice | currency: 'INR' }} </p>
+      <!-- <ion-badge width="25">4.1<ion-icon name="star"></ion-icon></ion-badge>  -->
+        <!-- <span style="font-size: 12px;color: #717171; margin: 8px;">340 ratings, 58 reviews</span> -->
+     </ion-card-content>
+      <!-- <ion-row>
+        <ion-col width-50 >
+          <ion-icon name="share-alt">Share</ion-icon>
+        </ion-col>
+        <ion-col width-50 >
+            <ion-icon name="heart">Wishlist</ion-icon>
+        </ion-col>
+      </ion-row> -->
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-content>    
+       <h2>Select Quantity</h2> 
+         <ion-row>
+          <ion-col width-25 style="text-align: center;">
+            <button clear (click)="decrementQty()" style="background-color: transparent;">
+              <ion-icon name="remove-circle" style="color: #F21F80; font-size: 28px;"></ion-icon>
+            </button>
+          <span style="margin: 20px; color: #737373; vertical-align: super;" >{{qty}}</span>
+          <button clear (click)="incrementQty()" style="background-color: transparent; ">
+            <ion-icon name="add-circle" style="color: #F21F80; font-size: 28px;"></ion-icon>
+          </button>
+        </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+<ion-row>
+  <ion-col>
+    <h5 style="margin-top: 6px;margin-left: 20px;">Total Amount: <span style="margin-left: 10px;">{{this.price | currency:"&#8377;"}}</span></h5>
+  </ion-col>
+</ion-row>
+<!-- 
+  <ion-card>
+    <ion-card-content>
+      <ion-row class="detail">
+          Ratings & Reviews
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <span style=" font-size: xx-large; ">4.1
+            <ion-icon name="star"></ion-icon>
+          </span> <br>
+          <span style="font-size: 12px;color: #717171;">385161 ratings</span>
+          <span style="font-size: 12px;color: #717171;">,  20137 reviews</span>
+        </ion-col>
+       
+      </ion-row>
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>
+
+<ion-footer style="background-color: #fff; text-align: center;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button type="button" class="btn btn-dark" style="background-color: #F21F80; border-color: white;" (click)="goToTransaction()">
+              <ion-icon name="cart" style="margin-right: 15px;"></ion-icon>Proceed to Buy
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-footer>

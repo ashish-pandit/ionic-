@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Machine Near Me</ion-title>
+    <!-- <ngx-ui-loader ></ngx-ui-loader> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list>
+    <ion-card *ngFor="let machine of machines" text-wrap style="text-align: center;" (click)="openProductPage(product)">
+      <ion-thumbnail item-left style="width:33%">
+        <img class="img-thumbnail" src="assets/femikarelogo.png" />
+      </ion-thumbnail>
+
+      <span> {{ machine.machine_name }} </span>
+
+    <p style="overflow: hidden;">
+        <span >{{ machine.machine_address }}</span>
+      </p>
+
+      <button ion-button icon clear item-right>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-card>
+  </ion-list> -->
+  <ion-grid style="padding: 0px;">
+    <ion-row *ngFor="let machine of machines" class="shadow-effect" (click) = 'map(machine)'>
+      <!-- <ion-col size = '3'> -->
+        <!-- <img style="height: 83px;" class="img-thumbnail" src="assets/femikarelogo.png" /> -->
+      <!-- </ion-col> -->
+      <ion-col size = '9'>
+        <span> {{ machine.machine_name }} </span>
+        <p style="overflow: hidden; line-height: 14px; margin-bottom: 0px;">
+          <small class="text-muted">{{ machine.machine_address }}</small>
+        </p>
+      </ion-col>
+      <ion-col size = '3'>
+        <span style="color:#787575; font-size: 13px;">{{ machine.distance.toFixed(1) }} KM</span>
+        <button style="background: transparent; float: right;">
+          <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-list >
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="category-wrapper" *ngFor="let machine of machines" >
+      <ion-thumbnail item-left>
+        <img src="assets/femikarelogo.png" class="category-img"/>
+        </ion-thumbnail>
+        <h6>{{ machine.machine_name }}</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-list> -->
+  <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
